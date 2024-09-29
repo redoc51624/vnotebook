@@ -1,3 +1,11 @@
+#backened
+#########installations
+1) nodemon
+
+#bcryptJs---https://www.npmjs.com/package/bcryptjs
+#salt pepper
+#npm install jsonwebtoken - https://www.npmjs.com/package/jsonwebtoken
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
