@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 const mongoURI = "mongodb://localhost:27017/vnotebook";
 
-// const connectToMongo = () => {
-//     mongoose.connect(mongoURI,()=>{
-//         console.log("Connected to mongo successfully");
-//     })
-// }
-
+//mongo db is connected
 const connectToMongo = () => {
     mongoose.connect(mongoURI);
   };
