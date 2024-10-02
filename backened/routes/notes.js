@@ -39,7 +39,7 @@ router.post('/addnote', fetchuser, [
             res.status(500).send("Internal Server Error");
         }
     })
-    //Route 3: update note using: POST "/api/auth/updatenote" login required
+    //Route 3: update note using: PUT "/api/auth/updatenote" login required
 router.put('/updatenote/:id', fetchuser, async (req, res) => {
     const { title, description, tag } = req.body;
     try {
