@@ -6,6 +6,7 @@
 #salt pepper
 #npm install jsonwebtoken - https://www.npmjs.com/package/jsonwebtoken
 ####concurrently
+#####fontawesome
 
 # Getting Started with Create React App
 
