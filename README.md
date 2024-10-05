@@ -7,6 +7,8 @@
 #npm install jsonwebtoken - https://www.npmjs.com/package/jsonwebtoken
 ####concurrently
 #####fontawesome
+#### npm install cors
+
 
 # Getting Started with Create React App
 
