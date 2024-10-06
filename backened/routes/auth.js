@@ -14,10 +14,11 @@ router.post('/createuser', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password must be atleastr 5 character').isLength({ min: 5 }),
 ], async (req, res) => {
+  let success = false;
   //If there are errors,return bad request and the error
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ success, errors: errors.array() });
   }
 
   //check whether user exist already with this  email
@@ -25,7 +26,7 @@ router.post('/createuser', [
   try {
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-      return res.status(400).json({ error: "Sorry user exist with this email" })
+      return res.status(400).json({ success, error: "Sorry user exist with this email" })
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -45,7 +46,8 @@ router.post('/createuser', [
     const authtoken = jwt.sign(data, JWT_SECRET);
 
     // res.json(user)
-    res.json({ authtoken })
+    success =  true;
+    res.json({ success, authtoken })
   }
   //Catch error
   catch (error) {
@@ -70,7 +72,7 @@ router.post('/login', [
   try {
     let user = await User.findOne({ email });
     if (!user) {
-      success =  false;
+      success = false;
       return res.status(400).json({ error: "Please try to login with correct credential" });
     }
     const passwordCompare = await bcrypt.compare(password, user.password);
@@ -95,7 +97,7 @@ router.post('/login', [
 
 //Route 3: Get loggedin user details using: POST "./api/auth/getUser"
 
-router.post('/getuser', fetchuser, async(req,res) => {
+router.post('/getuser', fetchuser, async (req, res) => {
 
   try {
     userId = req.user.id;
