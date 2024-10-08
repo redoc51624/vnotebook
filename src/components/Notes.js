@@ -4,7 +4,9 @@ import NoteItem from './NoteItem';
 import AddNote from './AddNote';
 
 
-const Notes = () => {
+const Notes = ({showAlert}) => {
+    
+  console.log(showAlert);
     const context = useContext(noteContext);
     const { notes, getNotes, editNote } = context;
     const ref = useRef(null);
